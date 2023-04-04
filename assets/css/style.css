@@ -3,6 +3,9 @@
   padding: 20px; 
 }
 
+.search-button{
+  display: block
+}
 .search-history-list{
   font-size: 10px;
 }

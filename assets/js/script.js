@@ -13,6 +13,8 @@ var historyEl = document.getElementById("history");
 var fivedayEl = document.getElementById("fiveday-header");
 var todayweatherEl = document.getElementById("today-weather");
 
+var forecastEl = document.querySelectorAll(".forecast");
+
 function getweather(cityName) {
   //var queryUrl ='https://api.openweathermap.org/data/2.5/weather?q=' + cityName + "&appid=" +apiKey;
   var queryUrl =
@@ -44,7 +46,7 @@ function getWeatherDetails(data) {
   var month = currentDate.getMonth() + 1;
   var day = currentDate.getDate();
   var year = currentDate.getFullYear();
-  cityNameEl.innerHTML = data + "(" + month + "/" + day + "/" + year + ")";
+  cityNameEl.innerHTML = data.location.name + "(" + month + "/" + day + "/" + year + ")";
 
   //var weatherLogo = document.createElement("img");
   var weatheImgSrc = data.current.condition.icon;
@@ -95,7 +97,7 @@ function getWeatherDetails(data) {
       response.json().then(function (forecastData) {
         console.log(forecastData);
         fivedayEl.classList.remove("d-none");
-        var forecastEl = document.querySelectorAll(".forecast");
+        
         var forcastDetails = forecastData.forecast.forecastday; 
         for (var i = 1; i < forcastDetails.length; i++) {
           //forecastEl[i].innerHTML = "";
@@ -134,26 +136,28 @@ function kelvin2F(K) {
   return Math.floor((K - 273.15) * 1.8 + 32);
 }
 searchEl.addEventListener("click", function () {
+  for(var i=0; i< forecastEl.length; i++){
+    forecastEl[i].innerHTML = " ";
+  }
   var searchCity = cityEl.value;
   getweather(searchCity);
   searchHistory.push(searchCity);
   localStorage.setItem("search", JSON.stringify(searchHistory));
-  getSearchHistory();
+  getSearchHistory(searchCity);
 });
 
-function getSearchHistory() {
-  for (var i = 0; i < searchHistory.length; i++) {
+function getSearchHistory(searchCity) {
+  
     var searchedHistoryItem = document.createElement("li");
     // searchedHistoryItem.setAttribute("type", "text");
-    searchedHistoryItem.setAttribute("readOnly", true);
-    searchedHistoryItem.setAttribute("class", "form-control bg-white d-block");
-    searchedHistoryItem.setAttribute("value", searchHistory[i]);
+    //searchedHistoryItem.setAttribute("readOnly", true);
+    searchedHistoryItem.setAttribute("class", "form-control bg-white d-block row");
+    //searchedHistoryItem.setAttribute("value", searchHistory[i]);
+
+    searchedHistoryItem.innerHTML =  searchCity;
 
     searchedHistoryItem.addEventListener("click", function () {
       getweather(searchedHistoryItem.value);
     });
     historyEl.append(searchedHistoryItem);
   }
-}
-
-getSearchHistory();

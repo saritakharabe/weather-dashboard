@@ -18,18 +18,19 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3 bg-light">
+            <div class="col-lg-3 bg-light d-block">
                 <h5>Search for a City:</h5>
                 <div class="input-group mb-3">
                     <input id="enter-city" type="text" class="form-control" placeholder="Enter city-name" aria-label="Enter a city">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="button" id="search-button">
-                            <i class="fas fa-search"></i>
+                        <button class="btn btn-primary search-button" type="button" id="search-button">
+                            Search
                         </button>
                     </div>
-                    <div class="search-history-list">
-                        <h3 id="history"> </h3>
-                    </div>
+                    
+                </div>
+                <div class="search-history-list">
+                    <h3 id="history" class="city-name"> </h3>
                 </div>
             </div>
             <div class="col-lg-9">
@@ -50,7 +51,7 @@
                         <h3>5-Days Forecast</h3>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" >
                     <div class="col-md-2 forecast bg-primary text-white m-2 rounded "></div>
                     <div class="col-md-2 forecast bg-primary text-white m-2 rounded "></div>
                     <div class="col-md-2 forecast bg-primary text-white m-2 rounded "></div>
