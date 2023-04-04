@@ -2,6 +2,8 @@
 
 ![sreenshot of final page](./assets/images/weather-dashboard.png)
 
+### URL https://saritakharabe.github.io/weather-dashboard/
+
 ## User Story
 
 ```
