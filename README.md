@@ -1,5 +1,7 @@
 # Server Side APIs - Weather-Dashboard
 
+![sreenshot of final page](./assets/images/weather-dashboard.png)
+
 ## User Story
 
 ```
